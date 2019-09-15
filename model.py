@@ -36,7 +36,7 @@ def trainAndGetPredictions(income_val, age_val):
     plt.clf()
 
     # create a clustering model with two dimensions (age and income)
-    CLASS_NUM = 3
+    CLASS_NUM = 5
     kmeans = KMeans(n_clusters=CLASS_NUM, random_state=0).fit(X)
     print(kmeans.labels_)
 
@@ -73,10 +73,8 @@ def trainAndGetPredictions(income_val, age_val):
 
     predicted_class = kmeans.predict(input_array)
 
+    print('printed class')
     print(predicted_class)
-
-    print('printing dict')
-    print(feat_loc)
 
     # return the postal codes of the top 20 points
     top_20_zipcodes = []
@@ -94,11 +92,11 @@ def trainAndGetPredictions(income_val, age_val):
             top_20_zipcodes.append(feat_loc[concat_feat])
             concat_feat = ""
     else:
-        return []
+        # return []
         # return default values worst case
-        # return ['L5S', 'M5H', 'P0Y', 'N6A', 'K7L', 'L4S', 'N2M', 'L4C', 'N6G', 'L6V', 'M2P', 'N5L', 'L2E', 'N3T', 'M9V', 'L5W', 'L2R', 'M5T', 'L2V', 'M3L']
+        return ['L5S', 'M5H', 'P0Y', 'N6A', 'K7L', 'L4S', 'N2M', 'L4C', 'N6G', 'L6V', 'M2P', 'N5L', 'L2E', 'N3T', 'M9V', 'L5W', 'L2R', 'M5T', 'L2V', 'M3L']
 
     print((top_20_zipcodes))
     return top_20_zipcodes
 
-#trainAndGetPredictions(41.9, 32512)
+#print(trainAndGetPredictions(40512, 32))
